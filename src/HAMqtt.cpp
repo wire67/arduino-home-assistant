@@ -77,6 +77,14 @@ HAMqtt::~HAMqtt()
     _instance = nullptr;
 }
 
+void HAMqtt::init(Client& netClient) {
+  if (_mqtt) {
+      delete _mqtt;
+  }
+  _mqtt = new PubSubClient(netClient);
+  _initialized = false;
+}
+
 bool HAMqtt::begin(
     const IPAddress serverIp,
     const uint16_t serverPort,

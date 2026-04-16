@@ -86,6 +86,11 @@ public:
     ~HAMqtt();
 
     /**
+     * Option to dynamically change netClient before begin, so it can be switched between WiFiClientSecure or WiFiClient.
+     */
+    void init(Client& netClient);
+
+    /**
      * Sets the prefix of the Home Assistant discovery topics.
      * It needs to match the prefix set in the HA admin panel.
      * The default prefix is "homeassistant".
